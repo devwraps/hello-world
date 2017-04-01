@@ -1,0 +1,84 @@
+
+public class ListQueue {
+	private class Node{
+		//TODO Implement Linked List Node
+		
+		public String data;
+		public Node next;
+		
+		//Constructors
+		public Node(){
+			this("bl", null);
+		}
+		
+		public Node(String input){
+			this(input, null);
+		}
+		
+		public Node(String data, Node next){
+			this.data = data;
+			this.next = next;
+		}	
+	}
+	
+	
+//Class variables here, if necessary
+	private Node front; //first value in the list
+	
+	
+	public ListQueue(){
+		//TODO Implement constructor (auto-initialize)
+		//Constructs an empty List
+		front = new Node();
+		front.data = "hi";
+	}
+	
+	public ListQueue(String str){
+		
+	}
+	
+	
+	
+//Three Methods	
+	public void enqueue(String toInput) {
+		// TODO Implement enqueue
+		//If it's the first node, fills the data, and makes pointer ->null
+		if(front==null){
+			//front = new Node(toInput);
+			front = new Node("hi");
+		} else {
+			//Iterates through the queue to get to the last value before appending 
+			Node current = front;
+			//after loop executes, it will be pointing to the last node in the list
+			while (current.next != null){
+				current = current.next;
+			}
+			
+			//ends the add by creating a new Node with data, but a null pointer
+			//Changes the current null value in last node to instead link to a new node
+			current.next = new Node(toInput);
+		}
+	}
+	
+	public String dequeue(){
+		// TODO Implement dequeue
+		if(front!=null){
+			String info = front.data;
+			front = front.next;
+			return info;
+		}
+		
+		return null;
+	}
+	
+	public String front(){
+		// TODO Implement front
+		if(front!=null){
+			String info = front.data;
+			return info;
+		}
+		
+		return null;
+	}
+
+}
